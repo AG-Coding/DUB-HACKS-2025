@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Edit Chat</title>
+    <title>Picture Bot</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Image Edit Chat</h2>
+            <h2>Picture Bot</h2>
         </div>
         <div id="chat-box" class="chat-box">
             <!-- Chat messages will appear here -->
         </div>
         <div class="chat-input">
             <form id="chat-form">
-                <input type="text" id="message" placeholder="Enter your prompt (e.g., remove background)" required>
-                <input type="file" id="image-upload" accept="image/*">
+                <input type="text" id="message" placeholder="Describe the image edit..." required>
+                <input type="file" id="image-upload" accept="image/*" class="file-upload">
                 <button type="submit">Send</button>
             </form>
         </div>
