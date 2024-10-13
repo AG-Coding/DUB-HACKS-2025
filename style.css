@@ -20,6 +20,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
+    position: relative;
 }
 
 /* Sidebar */
@@ -32,19 +33,24 @@ body {
     gap: 20px;
     transition: transform 0.3s ease-in-out;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%); /* Initially closed */
 }
 
 .sidebar.open {
-    transform: translateX(0);
+    transform: translateX(0); /* Open state */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .sidebar {
-        transform: translateX(-100%);
-        position: absolute;
-        z-index: 1;
+        position: static;
+        transform: none; /* Always visible on larger screens */
     }
 }
+
 
 .sidebar-header {
     display: flex;
@@ -147,6 +153,19 @@ button {
 }
 
 button:hover {
+    background-color: #777;
+}
+
+.custom-file-upload {
+    background-color: #555;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
     background-color: #777;
 }
 
