@@ -39,7 +39,7 @@ body {
     text-align: center;
     width: 100%;
     max-width: 800px;
-    height: 85vh;
+    height: 1000vh;
     background-color: rgba(52, 53, 65, 0.9); /* Dark background with slight transparency */
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
@@ -302,7 +302,7 @@ body {
     padding: 20px;
     width: 100%;
     max-width: 800px;
-    height: 85vh;
+    height: 1000vh;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Darker shadow for more contrast */
 }
 
