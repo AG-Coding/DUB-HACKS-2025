@@ -37,7 +37,7 @@ body {
     width: 100%;
     max-width: 800px;
     height: 85vh;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Darker shadow for more contrast */
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4); /* Darker shadow for more contrast */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Space between header, content, and input */
