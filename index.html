@@ -3,30 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural GeoBot</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Welcome to Cultural GeoBot</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1c1c1e;
+            color: #f5f5f7;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(28, 28, 30, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #ffbe0b;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #7b1fa2, 0 0 16px #7b1fa2;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .start-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #1c1c1e;
+            background-color: #ffbe0b;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #fb8500;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <div class="background-overlay"></div>
     <div class="container">
-        <h1 class="title">Cultural GeoBot</h1>
-        <div class="chat-container">
-            <div id="image-display" class="image-display">
-                <!-- Random image will be displayed here -->
-            </div>
-            <div id="chat-window" class="chat-window">
-                <!-- Chat messages will appear here -->
-            </div>
-
-            <div class="input-container">
-                <input type="text" id="user-input" placeholder="Enter your guess..." autocomplete="off">
-                <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+        <h1>Welcome to Cultural GeoBot!</h1>
+        <p>
+            Get ready to embark on a cultural exploration! Test your knowledge of different countries through hints and
+            images. Guess the country and learn fascinating facts along the way.
+        </p>
+        <p>
+            Think you can identify a country just by its famous landmarks or foods? Challenge yourself and see how much
+            you know about the world!
+        </p>
+        <p>
+            Click below to start your journey!
+        </p>
+        <button class="start-btn" onclick="window.location.href='main.html'">Start Game</button>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
