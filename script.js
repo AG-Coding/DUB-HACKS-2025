@@ -7,17 +7,14 @@ let waitingForNewGame = false;
 const locations = [
     {
         country: "Italy",
-        image: "https://example.com/italy.jpg", // Replace with a real image link
         hints: ["Famous for pizza and pasta", "Home to the Colosseum", "Capital is Rome"]
     },
     {
         country: "Japan",
-        image: "https://example.com/japan.jpg", // Replace with a real image link
         hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
     },
     {
         country: "United States of America",
-        image: "https://example.com/USA.jpg", // Replace with a real image link
         hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
     }
 ];
