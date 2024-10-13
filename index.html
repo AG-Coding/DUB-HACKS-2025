@@ -4,26 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Picture Bot</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Picture Bot</h2>
-        </div>
-        <div id="chat-box" class="chat-box">
-            <!-- Chat messages will appear here -->
-        </div>
-        <div class="chat-input">
-            <form id="chat-form">
-                <input type="text" id="message" placeholder="Describe the image edit..." required>
-                <input type="file" id="image-upload" accept="image/*" class="file-upload">
-                <button type="submit">Send</button>
-            </form>
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Chats</h2>
+                <button id="toggle-sidebar">☰</button>
+            </div>
+            <ul id="chat-list">
+                <!-- List of old chats -->
+                <li class="chat-item">Chat 1</li>
+                <li class="chat-item">Chat 2</li>
+                <!-- More chat items can be added dynamically -->
+            </ul>
+        </aside>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Picture Bot</h2>
+            </div>
+            <div id="chat-box" class="chat-box">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <form id="chat-form">
+                    <input type="text" id="message" placeholder="Describe the image..." required>
+                    <label for="image-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Attach Image
+                    </label>
+                    <input type="file" id="image-upload" accept="image/*" class="file-upload">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
