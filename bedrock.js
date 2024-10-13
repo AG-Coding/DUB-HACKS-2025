@@ -14,7 +14,7 @@ const requestBody = {
       content: [
         {
           type: "text",
-          text: "tell joke\n",
+          text: ".give me 6 hints in proressive difficulty if I were guessing it based off an image of something of cultura importance to that country. make the hints approach revealing what the country actually is.make the output an array\n",
         },
       ],
     },
@@ -28,8 +28,11 @@ const requestBody = {
 };
 
 // Function to invoke the model and return the output
+//prompt should be "the country is ___."
 async function invokeModel(prompt) {
-  requestBody.messages[0].content[0].text = prompt;
+  //prompt
+  requestBody.messages[0].content[0].text =
+    prompt + requestBody.messages[0].content[0].text;
   const command = new InvokeModelCommand({
     modelId:
       "arn:aws:bedrock:us-east-2:588738573992:inference-profile/us.anthropic.claude-3-haiku-20240307-v1:0",
@@ -47,6 +50,8 @@ async function invokeModel(prompt) {
 }
 
 // Invoke the model and log the result
-invokeModel("capital of Poland please")
-  .then((result) => console.log(JSON.stringify(result, null, 2)))
-  .catch((error) => console.error("Error:", error));
+// invokeModel("capital of Poland please")
+//   .then((result) => console.log(JSON.stringify(result, null, 2)))
+//   .catch((error) => console.error("Error:", error));
+
+module.exports = { invokeModel };
