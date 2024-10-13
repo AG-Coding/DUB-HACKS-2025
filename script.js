@@ -2,22 +2,27 @@ let currentGame = {};
 let gamesPlayed = 0;
 let hintIndex = 0;
 let waitingForNewGame = false;
+let userAttempts = 0; // Track the number of user attempts
+let locations = [];
 
-// Sample data for hints and images
-const locations = [
-    {
-        country: "Italy",
-        hints: ["Famous for pizza and pasta", "Home to the Colosseum", "Capital is Rome"]
-    },
-    {
-        country: "Japan",
-        hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
-    },
-    {
-        country: "United States of America",
-        hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
-    }
-];
+// Fetch countries and set up hints and images
+function fetchCountries() {
+    return fetch('https://restcountries.com/v3.1/all')
+        .then(response => response.json())
+        .then(data => {
+            // Map country data to the format you need
+            locations = data.map(country => ({
+                country: country.name.common,
+                hints: [
+                    `Located in ${country.region}`,
+                    `Capital is ${country.capital ? country.capital[0] : "unknown"}`
+                ]
+            }));
+        })
+        .catch(error => {
+            console.error("Error fetching countries:", error);
+        });
+}
 
 // This function will search Wikipedia for a notable place in the given country and fetch its image
 function fetchLocationImage(countryName) {
@@ -28,7 +33,7 @@ function fetchLocationImage(countryName) {
         .then(data => {
             if (data.query.search && data.query.search.length > 0) {
                 // Get the first search result, assumed to be a landmark or important location
-                const firstResultTitle = data.query.search[1].title;
+                const firstResultTitle = data.query.search[0].title;
 
                 // Fetch the image from the page of the first result
                 return fetchImageFromPage(firstResultTitle);
@@ -55,9 +60,10 @@ function fetchImageFromPage(pageTitle) {
         });
 }
 
-// Example of startNewGame function, using the fetchLocationImage function
+// Start a new game
 function startNewGame() {
     hintIndex = 0; // Reset hint index
+    userAttempts = 0; // Reset user attempts
     waitingForNewGame = false; // Indicate that we're now in game mode
     let randomIndex = Math.floor(Math.random() * locations.length);
     currentGame = locations[randomIndex];
@@ -77,7 +83,7 @@ function startNewGame() {
     addMessage("bot", "Can you guess the country?");
 }
 
-
+// Function to add messages to the chat
 function addMessage(sender, message) {
     const chatWindow = document.getElementById('chat-window');
     const messageDiv = document.createElement('div');
@@ -111,6 +117,8 @@ function handleUserInput(input) {
 }
 
 function checkAnswer(guess) {
+    userAttempts++; // Increment user attempts
+
     if (guess.toLowerCase() === currentGame.country.toLowerCase()) {
         addMessage('bot', `Correct! The country is ${currentGame.country}.`);
         gamesPlayed++;
@@ -125,6 +133,12 @@ function checkAnswer(guess) {
             addMessage('bot', "Sorry, no more hints! Try guessing again.");
         }
     }
+
+    // After every 5 attempts, ask if they want to give up
+    if (userAttempts % 5 === 0) {
+        addMessage('bot', "Do you want to give up? (yes/no)");
+        waitingForNewGame = true; // Set the flag to true to indicate we're waiting for a response.
+    }
 }
 
 function askForAnotherGame() {
@@ -135,14 +149,18 @@ function askForAnotherGame() {
 function handleNewGameDecision(response) {
     const lowerResponse = response.toLowerCase();
     if (lowerResponse === 'yes') {
-        startNewGame();
+        addMessage('bot', `The correct country was: ${currentGame.country}.`);
+        startNewGame(); // Start a new game
     } else if (lowerResponse === 'no') {
+        // addMessage('bot', `The correct country was: ${currentGame.country}.`);
         addMessage('bot', "Thanks for playing! See you next time.");
-        waitingForNewGame = false; // Set the flag back to false.
+        waitingForNewGame = false; // End the game
     } else {
         addMessage('bot', "Please answer with 'yes' or 'no'.");
     }
 }
 
-// Start the first game
-startNewGame();
+// Start the game by fetching the countries first
+fetchCountries().then(() => {
+    startNewGame();
+});
