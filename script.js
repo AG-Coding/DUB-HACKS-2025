@@ -16,13 +16,42 @@ function fetchCountries() {
                 country: country.name.common,
                 hints: [
                     `Located in ${country.region}`,
-                    `Capital is ${country.capital ? country.capital[0] : "unknown"}`
+                    `Capital is ${country.capital ? country.capital[0] : "unknown"}`,
+                    `Population: ${country.population.toLocaleString()}`,
+                    `Official language(s): ${country.languages ? Object.values(country.languages).join(', ') : "unknown"}`,
+                    `Currency: ${country.currencies ? Object.values(country.currencies)[0].name : "unknown"}`,
+                    `Area: ${country.area.toLocaleString()} square kilometers`,
+                    `Time zone(s): ${country.timezones ? country.timezones.join(', ') : "unknown"}`,
+                    `Top-level domain: ${country.tld ? country.tld[0] : "unknown"}`,
+                    `Bordered by: ${country.borders ? country.borders.join(', ') : "no bordering countries"}`,
+                    `Famous for: ${getFamousForHint(country)}`
                 ]
             }));
         })
         .catch(error => {
             console.error("Error fetching places:", error);
         });
+}
+
+// Function to provide a "famous for" hint based on the country's region or special characteristics
+function getFamousForHint(country) {
+    const region = country.region;
+    switch (region) {
+        case "Europe":
+            return "its rich history and stunning architecture";
+        case "Africa":
+            return "its diverse wildlife and natural beauty";
+        case "Asia":
+            return "its ancient cultures and rapid modernization";
+        case "Oceania":
+            return "its beautiful islands and coral reefs";
+        case "Americas":
+            return "its vibrant cultures and varied landscapes";
+        case "Antarctic":
+            return "being the coldest place on Earth";
+        default:
+            return "something special!";
+    }
 }
 
 function fetchLocationImage(countryName) {
