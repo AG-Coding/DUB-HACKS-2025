@@ -75,5 +75,20 @@ function askForAnotherGame() {
     });
 }
 
+function addMessage(sender, message) {
+    const chatWindow = document.getElementById('chat-window');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(sender === 'bot' ? 'bot-message' : 'user-message');
+    messageDiv.innerText = message;
+    chatWindow.appendChild(messageDiv);
+
+    // Smoothly scroll to the bottom of the chat window
+    chatWindow.scrollTo({
+        top: chatWindow.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+
 // Start the first game
 startNewGame();

@@ -6,102 +6,122 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.header {
+    background-color: #343541;
+    color: #d1d5db;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 15px 20px;
-    background-color: #007bff;
-    color: white;
-    font-weight: 500;
-    font-size: 18px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
 }
 
-.menu-btn {
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+/* World map background */
+.background-overlay {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/eb/World_map_blank_without_borders.svg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1; /* Subtle effect */
+    z-index: -1;
 }
 
-h1 {
-    font-size: 24px;
-}
-
-.score {
-    font-size: 16px;
-}
-
-.chat-container {
+/* Chatbot container */
+.container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    height: 85vh;
+    background-color: rgba(52, 53, 65, 0.9); /* Dark background with slight transparency */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    padding: 20px;
 }
 
+/* Title at the top */
+.title {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Image display */
 .image-display {
     text-align: center;
-    margin: 20px;
-    animation: fadeIn 0.5s ease;
+    padding: 15px;
+    background-color: #525560;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .image-display img {
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Chat window */
 .chat-window {
     flex: 1;
-    padding: 15px;
+    width: 100%;
+    padding: 20px;
     overflow-y: auto;
-    background-color: white;
-    border-top: 1px solid #ddd;
+    background-color: #343541;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .bot-message, .user-message {
-    margin-bottom: 15px;
-    padding: 12px 18px;
-    border-radius: 15px;
-    max-width: 80%;
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 75%;
     animation: slideUp 0.3s ease;
 }
 
 .bot-message {
-    background-color: #f1f1f1;
+    background-color: #40414f;
+    color: #e4e4e7;
     text-align: left;
-    color: #333;
 }
 
 .user-message {
-    background-color: #007bff;
+    background-color: #056162;
     color: white;
     text-align: right;
     margin-left: auto;
 }
 
+/* Input container */
 .input-container {
     display: flex;
-    padding: 10px 20px;
-    border-top: 1px solid #ddd;
-    background-color: white;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #40414f;
+    border-top: 1px solid #565869;
+    border-radius: 8px;
+    align-items: center;
 }
 
 #user-input {
     flex: 1;
     padding: 12px 15px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
+    background-color: #343541;
+    color: #e4e4e7;
+    border: 1px solid #565869;
+    border-radius: 8px;
     outline: none;
-    transition: border 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 #user-input:focus {
@@ -109,29 +129,60 @@ h1 {
 }
 
 .send-btn {
-    padding: 10px 15px;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 8px;
     margin-left: 10px;
-    outline: none;
-    font-size: 20px;
-    transition: background-color 0.2s ease;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .send-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Scrollbar styling */
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #565869;
+    border-radius: 4px;
 }
 
 /* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
+    from { transform: translateY(10px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+.chat-window {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;  /* Enable vertical scrolling */
+    background-color: white;
+    border-top: 1px solid #ddd;
+    max-height: 400px;  /* Set a max height to trigger scrolling */
+    scrollbar-width: thin;  /* For Firefox */
+    scrollbar-color: #007bff #f1f1f1;  /* Custom scrollbar colors for Firefox */
+}
+
+/* Custom scrollbar for Chrome, Edge, and Safari */
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
