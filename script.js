@@ -150,15 +150,15 @@ function checkAnswer(guess) {
 function askForAnotherGame() {
     addMessage('bot', "Do you want to play another game? (yes/no)");
     waitingForNewGame = true; // Set the flag to true to indicate we're waiting for a response.
+    startNewGame();
 }
 
 function handleNewGameDecision(response) {
     const lowerResponse = response.toLowerCase();
     if (lowerResponse === 'yes') {
         addMessage('bot', `The correct country was: ${currentGame.country}.`);
-        startNewGame(); // Start a new game
+        startNewGame();
     } else if (lowerResponse === 'no') {
-        // addMessage('bot', `The correct country was: ${currentGame.country}.`);
         addMessage('bot', "Thanks for playing! See you next time.");
         waitingForNewGame = false; // End the game
     } else {
