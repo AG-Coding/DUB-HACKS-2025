@@ -33,7 +33,7 @@ function fetchLocationImage(countryName) {
         .then(data => {
             if (data.query.search && data.query.search.length > 0) {
                 // Get the first search result, assumed to be a landmark or important location
-                const firstResultTitle = data.query.search[0].title;
+                const firstResultTitle = data.query.search[1].title;
 
                 // Fetch the image from the page of the first result
                 return fetchImageFromPage(firstResultTitle);
