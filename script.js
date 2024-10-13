@@ -96,14 +96,14 @@ function startNewGame() {
     fetchLocationImage(currentGame.country)
         .then(imageUrl => {
             document.getElementById('image-display').innerHTML = `
-                <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:auto;">
+                <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:200px; object-fit:cover;">
             `;
         })
         .catch(() => {
             fetchLocationImage(currentGame.country)
         .then(imageUrl => {
             document.getElementById('image-display').innerHTML = `
-                <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:auto;">
+                <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:200px; object-fit:cover;">
             `;
         })
         });
