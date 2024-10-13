@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cultural GeoBot</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      reli="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="background-overlay"></div>
     <div class="container">
-        <h1 class="title">Cultural GeoBot</h1>
-        <div class="chat-container">
-            <div id="image-display" class="image-display">
-                <!-- Random image will be displayed here -->
-            </div>
-            <div id="chat-window" class="chat-window">
-                <!-- Chat messages will appear here -->
-            </div>
-
-            <div class="input-container">
-                <input type="text" id="user-input" placeholder="Enter your guess..." autocomplete="off">
-                <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
-            </div>
+      <h1 class="title">Cultural GeoBot</h1>
+      <div class="chat-container">
+        <div id="image-display" class="image-display">
+          <!-- Random image will be displayed here -->
         </div>
+        <div id="chat-window" class="chat-window">
+          <!-- Chat messages will appear here -->
+        </div>
+
+        <div class="input-container">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Enter your guess..."
+            autocomplete="off"
+          />
+          <button id="send-btn" class="send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,8 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-import { invokeModel } from "./modelInvoker.js";
-
+const invokeModel = require("./bedrock.js");
 const app = express();
 
 // Middleware
@@ -11,7 +10,7 @@ app.use(bodyParser.json());
 
 app.post("/api/generate-content", async (req, res) => {
   try {
-    invokeModel("capital of Poland please")
+    invokeModel("capital of" + req + " please")
       .then((result) => res.json({ content: text }))
 
       .catch((error) => console.error("Error:", error));
