@@ -14,7 +14,7 @@ const requestBody = {
       content: [
         {
           type: "text",
-          text: ".give me 6 hints in proressive difficulty if I were guessing it based off an image of something of cultura importance to that country. make the hints approach revealing what the country actually is.make the output an array\n",
+          text: ".give me 6 hints in proressive difficulty if I were guessing it based off an image of something of cultura importance to that place. make the hints approach revealing what the country actually is.make the output an array\n",
         },
       ],
     },
@@ -28,7 +28,7 @@ const requestBody = {
 };
 
 // Function to invoke the model and return the output
-//prompt should be "the country is ___."
+//prompt should be "the place is ___."
 async function invokeModel(prompt) {
   //prompt
   requestBody.messages[0].content[0].text =

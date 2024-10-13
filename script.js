@@ -11,7 +11,7 @@ function fetchCountries() {
     return fetch('https://restcountries.com/v3.1/all')
         .then(response => response.json())
         .then(data => {
-            // Map country data to the format you need
+            // Map places data to the format you need
             locations = data.map(country => ({
                 country: country.name.common,
                 hints: [
@@ -21,7 +21,7 @@ function fetchCountries() {
             }));
         })
         .catch(error => {
-            console.error("Error fetching countries:", error);
+            console.error("Error fetching places:", error);
         });
 }
 
@@ -79,7 +79,7 @@ function startNewGame() {
         })
         });
 
-    addMessage("bot", "Can you guess the country?");
+    addMessage("bot", "Can you guess the place?");
 }
 
 function addMessage(sender, message) {
@@ -158,7 +158,7 @@ function handleNewGameDecision(response) {
 function handleGiveUpDecision(response) {
     const lowerResponse = response.toLowerCase();
     if (lowerResponse === 'yes') {
-        addMessage('bot', `You gave up! The correct country was: ${currentGame.country}.`);
+        addMessage('bot', `You gave up! The correct place was: ${currentGame.country}.`);
         setTimeout(() => {
             askForAnotherGame();
         }, 1000); // Ask for another game after revealing the country
