@@ -76,8 +76,14 @@ function startNewGame() {
             `;
         })
         .catch(error => {
-            console.error("Error fetching location image:", error);
-            document.getElementById('image-display').innerHTML = `<p>Image not available</p>`;
+            // console.error("Error fetching location image:", error);
+            // document.getElementById('image-display').innerHTML = `<p>Image not available</p>`;
+            fetchLocationImage(currentGame.country)
+            .then(imageUrl => {
+                document.getElementById('image-display').innerHTML = `
+                    <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:auto;">
+                `;
+            })
         });
 
     addMessage("bot", "Can you guess the country?");
