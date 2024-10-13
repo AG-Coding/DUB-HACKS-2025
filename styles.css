@@ -46,11 +46,19 @@ body {
     padding: 20px;
 }
 
-/* Title at the top */
+/* Title at the top
 .title {
     font-size: 28px;
     color: white;
     margin-bottom: 20px;
+} */
+
+.title {
+    font-size: 32px;
+    color: #e4e4e7;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px #7b1fa2, 0 0 16px #7b1fa2;
+    animation: pulse 2s infinite alternate;
 }
 
 /* Image display */
