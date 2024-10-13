@@ -14,8 +14,12 @@ const locations = [
         country: "Japan",
         image: "https://example.com/japan.jpg", // Replace with a real image link
         hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
+    },
+    {
+        country: "United States of America",
+        image: "https://example.com/USA.jpg", // Replace with a real image link
+        hints: ["Known for sushi", "Mount Fuji is here", "Capital is Tokyo"]
     }
-    // Add more locations as needed
 ];
 
 // This function will search Wikipedia for a notable place in the given country and fetch its image
@@ -27,7 +31,7 @@ function fetchLocationImage(countryName) {
         .then(data => {
             if (data.query.search && data.query.search.length > 0) {
                 // Get the first search result, assumed to be a landmark or important location
-                const firstResultTitle = data.query.search[0].title;
+                const firstResultTitle = data.query.search[1].title;
 
                 // Fetch the image from the page of the first result
                 return fetchImageFromPage(firstResultTitle);
@@ -65,7 +69,7 @@ function startNewGame() {
     fetchLocationImage(currentGame.country)
         .then(imageUrl => {
             document.getElementById('image-display').innerHTML = `
-                <img src="${imageUrl}" alt="${currentGame.country}" style="width:300px; height:auto;">
+                <img src="${imageUrl}" alt="${currentGame.country}" style="width:200px; height:auto;">
             `;
         })
         .catch(error => {
